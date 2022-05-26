@@ -1,0 +1,28 @@
+{
+  "name": "repo",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "parcel --no-autoinstall ./src/index.html",
+    "lint": "eslint --ext .ts,.tsx src",
+    "lint-err": "eslint --quiet --ext .ts,.tsx src",
+    "tsc-watch": "tsc --noEmit --watch"
+  },
+  "devDependencies": {
+    "@parcel/config-default": "2.3.2",
+    "@parcel/transformer-typescript-tsc": "^2.3.2",
+    "@types/react": "18.0.9",
+    "@types/react-dom": "^18.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "eslint": "^8.16.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "parcel": "^2.3.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}

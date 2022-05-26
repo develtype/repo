@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "strict": true,
+    "baseUrl": ".",
+    "target": "es5",
+    "moduleResolution": "node",
+    "module": "es2015",
+    "outDir": "dist",
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "paths": {
+      "~*": ["./*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "custom_types"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+}
