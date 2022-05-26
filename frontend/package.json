@@ -1,5 +1,5 @@
 {
-  "name": "repo",
+  "name": "repo-fe",
   "version": "0.0.1",
   "scripts": {
     "start": "parcel --no-autoinstall ./src/index.html",
