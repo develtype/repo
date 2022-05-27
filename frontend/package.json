@@ -12,6 +12,7 @@
     "@parcel/transformer-typescript-tsc": "^2.3.2",
     "@types/react": "18.0.9",
     "@types/react-dom": "^18.0.5",
+    "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "eslint": "^8.16.0",
@@ -23,6 +24,7 @@
   "dependencies": {
     "parcel": "^2.3.2",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^6.3.0"
   }
 }
