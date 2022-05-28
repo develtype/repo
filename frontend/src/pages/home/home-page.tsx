@@ -11,6 +11,7 @@ const libItemList = [
   'Redux-observable',
   'RxJS',
   'Emotion',
+  'React-inlineSVG',
 ];
 
 export const HomePage = () => (
@@ -21,7 +22,7 @@ export const HomePage = () => (
     />
     <div className={styles.content}>
       <label className={styles.contentTitle}>
-        Library List
+        Used Library List
       </label>
       <Space vertical={20} />
       <ul className={styles.list}>
