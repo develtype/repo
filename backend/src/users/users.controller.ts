@@ -15,6 +15,22 @@ const fetchUsers = async (req: Request, res: Response): Promise<Response> => {
   }
 };
 
+const createUser = async (req: Request<any, any, { name: string; email: string; }>, res: Response): Promise<Response> => {
+  try {
+    const { name, email } = req.body;
+    const data = await usersService.createUser(name, email);
+    return res.status(200).json({ status: 200, data });
+  }
+  catch (e) {
+    if (e instanceof Error) {
+      return res.status(400).json({ status: 400, message: e.message });
+    } else {
+      return res.status(500);
+    }
+  }
+};
+
 export const usersController = {
   fetch: fetchUsers,
+  create: createUser,
 };

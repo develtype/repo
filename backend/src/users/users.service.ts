@@ -12,7 +12,7 @@ const usersData: { [id: string]: UserType; } = Array.from(Array(10).keys()).redu
     const userItem = {
       id: item + 1,
       name,
-      email: name + '@gmail.com',
+      email: name + '@test.com',
     };
     res[item] = userItem;
     return res;
@@ -20,8 +20,25 @@ const usersData: { [id: string]: UserType; } = Array.from(Array(10).keys()).redu
   {},
 );
 
-const fetchUsers = async () => Object.values(usersData);
+const fetchUsers = async () => {
+  await new Promise((r) => setTimeout(r, Math.random() * 50 + 70));
+  return Object.values(usersData);
+};
+
+const createUser = async (name: string, email: string) => {
+  const newId = Math.max(...Object.values(usersData).map((user) => +user.id)) + 1;
+
+  usersData[newId] = {
+    id: newId,
+    name,
+    email,
+  };
+
+  await new Promise((r) => setTimeout(r, Math.random() * 80 + 80));
+  return { id: newId };
+};
 
 export const usersService = {
   fetchUsers,
+  createUser,
 };
