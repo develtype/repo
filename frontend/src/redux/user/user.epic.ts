@@ -14,10 +14,24 @@ const fetchUsersEpic: Epic = (
       userAction.fetchUsers.success(),
       userAction.setUsers(data),
     ]),
-    catchError((err) => of(userAction.fetchUsers.failure({ errorMsg: err.response?.data }))),
+    catchError((err) => of(userAction.fetchUsers.failure({ errorMsg: err.response?.message }))),
+  )),
+);
+
+const createUserEpic: Epic = (
+  actions$: Observable<Action>,
+) => actions$.pipe(
+  filter(userAction.createUser.request.match),
+  switchMap(({ payload }) => userService.createUser(payload).pipe(
+    mergeMap(() => [
+      userAction.createUser.success(),
+      userAction.fetchUsers.request(),
+    ]),
+    catchError((err) => of(userAction.createUser.failure({ errorMsg: err.response?.message }))),
   )),
 );
 
 export const userEpic = combineEpics(
   fetchUsersEpic,
+  createUserEpic,
 );
