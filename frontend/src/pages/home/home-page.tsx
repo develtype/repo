@@ -11,7 +11,6 @@ const libItemList = [
   'Redux-observable',
   'RxJS',
   'Emotion',
-  'React-inlineSVG',
 ];
 
 export const HomePage = () => (

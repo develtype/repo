@@ -3,6 +3,7 @@ import { css } from '@emotion/css';
 const root = css({
   position: 'sticky',
   top: 0,
+  zIndex: 1,
   width: '100%',
   height: 60,
   backgroundColor: '#39544b',

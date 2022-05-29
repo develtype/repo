@@ -1,15 +1,32 @@
 import React, { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './users-page.styles';
+import { DataColDefType, DataTable } from '~src/components/data-table/data-table';
 import { InputSearch } from '~src/components/input-search/input-search';
 import { PageHeader } from '~src/components/page-header/page-header';
+import { Space } from '~src/components/space/space';
 import { userSelector } from '~src/redux/user/user.state';
 
 export const UsersPage = () => {
+  const userHeaderDef: DataColDefType[] = [
+    {
+      dataKey: 'id',
+      label: 'ID',
+    },
+    {
+      dataKey: 'name',
+      label: 'Name',
+    },
+    {
+      dataKey: 'email',
+      label: 'e-Mail',
+    },
+  ];
+
   const usersList = useSelector(userSelector.usersList);
   const [filterString, setFilterString] = useState('');
 
-  const filteredUserList = useMemo(() => {
+  const filteredUserDataList = useMemo(() => {
     const lowerCaseFilterString = filterString.toLowerCase();
 
     return usersList.filter((user) => user.name.toLowerCase().includes(lowerCaseFilterString));
@@ -25,18 +42,18 @@ export const UsersPage = () => {
         <div>
           <InputSearch
             placeholder="serach user name"
-            width={200}
+            width={250}
             onChange={(e) => setFilterString(e.currentTarget.value)}
           />
         </div>
-        <ul>
-          {filteredUserList.map((user) => (
-            <li key={user.id}>
-              <div>{user.name}</div>
-              <div>{user.email}</div>
-            </li>
-          ))}
-        </ul>
+        <Space vertical={20} />
+        <DataTable
+          width={800}
+          dataColDef={userHeaderDef}
+          dataList={filteredUserDataList}
+          colorizedRow
+          columnSeperate
+        />
       </div>
     </div>
   );
