@@ -1,21 +1,22 @@
 import { css } from '@emotion/css';
-import * as React from 'react';
+import React from 'react';
 
 type PropsType = {
   vertical?: number | 'auto';
   horizonal?: number | 'auto';
 }
 
-export const Space: React.FC<PropsType> = ({
+export const Space = ({
   vertical = 0,
   horizonal = 0,
-}) => (
-  <div
-    className={css({
-      display: horizonal ? 'inline-block' : 'block',
-      marginTop: vertical,
-      marginLeft: horizonal,
-      label: 'Space',
-    })}
-  />
-);
+}: PropsType) => {
+  const root = css({
+    display: horizonal ? 'inline-block' : 'block',
+    marginTop: vertical,
+    marginLeft: horizonal,
+  });
+
+  return (
+    <div className={root} />
+  );
+};

@@ -5,11 +5,17 @@ const root = css({
 });
 
 const content = css({
-  width: '100%',
+  width: 800,
   padding: '20px 30px',
+});
+
+const controlWrapper = css({
+  display: 'flex',
+  justifyContent: 'space-between',
 });
 
 export default {
   root,
   content,
+  controlWrapper,
 };

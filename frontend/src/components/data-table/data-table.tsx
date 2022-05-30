@@ -73,9 +73,9 @@ export const DataTable = ({
             )}
           >
             {dataColDef.map(
-              (col) => (
+              (col, idx) => (
                 <td
-                  key={row[col.dataKey]}
+                  key={`${row[col.dataKey]}-${idx}`}
                   className={cx(
                     styles.bodyCell,
                     { [styles.columnSeperate]: columnSeperate && idx !== dataColDef.length - 1 },
