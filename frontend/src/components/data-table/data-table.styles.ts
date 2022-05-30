@@ -10,6 +10,7 @@ const cell = css({
   textAlign: 'center',
   border: '0px solid',
   padding: '5px 10px',
+  cursor: 'pointer',
 });
 
 const header = css({

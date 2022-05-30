@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styles from './home-page.styles';
+import styles from './home.styles';
 import { PageHeader } from '~src/components/page-header/page-header';
 import { Space } from '~src/components/space/space';
 

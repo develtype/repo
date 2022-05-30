@@ -19,6 +19,7 @@ type PropsType = {
   seperateRow?: boolean;
   colorizedRow?: boolean;
   columnSeperate?: boolean;
+  onClickRow?(dataRow: DataRowListType): void;
 }
 export const DataTable = ({
   width,
@@ -29,65 +30,76 @@ export const DataTable = ({
   seperateRow = true,
   colorizedRow,
   columnSeperate,
-}: PropsType) => (
-  <table
-    className={css(
-      styles.root,
-      {
-        width,
-      },
-    )}
-  >
-    <thead className={styles.header}>
-      <tr
-        className={css({
-          height: headRowHeight,
-        })}
-      >
-        {dataColDef.map(
-          (def, idx) => (
-            <th
-              key={def.dataKey}
+  onClickRow,
+}: PropsType) => {
+  function onClickDataRow(dataRow: DataRowListType) {
+    onClickRow && onClickRow(dataRow);
+  }
+
+  return (
+    <table
+      className={css(
+        styles.root,
+        {
+          width,
+        },
+      )}
+    >
+      <thead className={styles.header}>
+        <tr
+          className={css({
+            height: headRowHeight,
+          })}
+        >
+          {dataColDef.map(
+            (def, idx) => (
+              <th
+                key={def.dataKey}
+                className={cx(
+                  styles.headCell,
+                  { [styles.columnSeperate]: columnSeperate && idx !== dataColDef.length - 1 },
+                )}
+              >
+                {def.label ?? def.dataKey}
+              </th>
+            ),
+          )}
+        </tr>
+      </thead>
+      <tbody className={styles.body}>
+        {dataList.map(
+          (row, idx) => (
+            <tr
+              key={idx}
               className={cx(
-                styles.headCell,
-                { [styles.columnSeperate]: columnSeperate && idx !== dataColDef.length - 1 },
+                { [styles.seperateRow]: seperateRow },
+                { [styles.colorizedRow]: colorizedRow && (idx % 2 === 1) },
+                css({
+                  height: bodyRowHeight,
+                }),
               )}
+              onClick={(e) => {
+                e.stopPropagation();
+                onClickDataRow(row);
+              }}
             >
-              {def.label ?? def.dataKey}
-            </th>
+              {dataColDef.map(
+                (col, idx) => (
+                  <td
+                    key={`${row[col.dataKey]}-${idx}`}
+                    className={cx(
+                      styles.bodyCell,
+                      { [styles.columnSeperate]: columnSeperate && idx !== dataColDef.length - 1 },
+                    )}
+                  >
+                    {row[col.dataKey]}
+                  </td>
+                ),
+              )}
+            </tr>
           ),
         )}
-      </tr>
-    </thead>
-    <tbody className={styles.body}>
-      {dataList.map(
-        (row, idx) => (
-          <tr
-            key={idx}
-            className={cx(
-              { [styles.seperateRow]: seperateRow },
-              { [styles.colorizedRow]: colorizedRow && (idx % 2 === 1) },
-              css({
-                height: bodyRowHeight,
-              }),
-            )}
-          >
-            {dataColDef.map(
-              (col, idx) => (
-                <td
-                  key={`${row[col.dataKey]}-${idx}`}
-                  className={cx(
-                    styles.bodyCell,
-                    { [styles.columnSeperate]: columnSeperate && idx !== dataColDef.length - 1 },
-                  )}
-                >
-                  {row[col.dataKey]}
-                </td>
-              ),
-            )}
-          </tr>
-        ),
-      )}
-    </tbody>
-  </table>
-);
+      </tbody>
+    </table>
+  );
+};
