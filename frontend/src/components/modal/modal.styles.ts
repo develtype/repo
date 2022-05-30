@@ -9,7 +9,7 @@ const root = css({
   bottom: 0,
   minWidth: 800,
   minHeight: 700,
-  backgroundColor: 'rgb(0 0 0 / 0.6)',
+  backgroundColor: 'rgb(0 0 0 / 0.45)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
