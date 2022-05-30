@@ -19,7 +19,6 @@ const root = css({
     cursor: 'not-allowed',
     opacity: 0.5,
   },
-  label: 'Input',
 });
 
 const outlined = css({

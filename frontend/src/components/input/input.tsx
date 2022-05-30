@@ -1,17 +1,17 @@
 import { css, cx } from '@emotion/css';
-import * as React from 'react';
+import React, { HTMLInputTypeAttribute, InputHTMLAttributes } from 'react';
 import styles from './input.styles';
 
 type PropsType = {
-  type: React.HTMLInputTypeAttribute;
+  type: HTMLInputTypeAttribute;
   min?: number;
   max?: number;
   width?: number;
-  height?: 28 | 34;
+  height?: 28 | 32;
   borderType?: 'default' | 'none' | 'bottom';
-} & React.InputHTMLAttributes<HTMLInputElement>
+} & InputHTMLAttributes<HTMLInputElement>
 
-export const Input: React.FC<PropsType> = ({
+export const Input = ({
   type,
   min,
   max,
@@ -20,7 +20,7 @@ export const Input: React.FC<PropsType> = ({
   height = 28,
   borderType = 'default',
   ...props
-}) => (
+}: PropsType) => (
   <input
     {...props}
     type={type}

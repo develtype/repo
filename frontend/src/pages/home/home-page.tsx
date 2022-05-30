@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styles from './home-page.styles';
 import { PageHeader } from '~src/components/page-header/page-header';
 import { Space } from '~src/components/space/space';
@@ -26,12 +26,12 @@ export const HomePage = () => (
       <Space vertical={20} />
       <ul className={styles.list}>
         {libItemList.map((item, idx) => (
-          <React.Fragment key={item}>
+          <Fragment key={item}>
             <li className={styles.item}>
               {item}
             </li>
             {idx !== libItemList.length - 1 && <Space vertical={10} />}
-          </React.Fragment>
+          </Fragment>
         ))}
       </ul>
     </div>

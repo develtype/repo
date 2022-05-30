@@ -1,22 +1,22 @@
 import { css } from '@emotion/css';
-import * as React from 'react';
+import React, { ChangeEvent, KeyboardEvent } from 'react';
 import InlineSVG from 'react-inlinesvg/esm';
 import { Input } from '../input/input';
-import * as styles from './input-search.styles';
+import styles from './input-search.styles';
 import iconSearch from '~src/asset/icon/icon-search.svg';
 
 export type PropsType = {
   value?: string;
   width?: number;
-  height?: 28 | 34;
+  height?: 28 | 32;
   placeholder?: string;
   disabled?: boolean;
   borderType?: 'default' | 'none' | 'bottom';
-  onChange?(e: React.ChangeEvent<HTMLInputElement>): void;
-  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onChange?(e: ChangeEvent<HTMLInputElement>): void;
+  onKeyPress?: (e: KeyboardEvent<HTMLInputElement>) => void;
 };
 
-export const InputSearch: React.FC<PropsType> = ({
+export const InputSearch = ({
   value,
   width,
   height,
@@ -25,15 +25,15 @@ export const InputSearch: React.FC<PropsType> = ({
   borderType = 'default',
   onChange,
   onKeyPress,
-}) => (
+}: PropsType) => (
   <div className={css(
-    styles.Root,
+    styles.root,
     {
       width,
     },
   )}
   >
-    <InlineSVG src={iconSearch} width={13} height={13} className={styles.Icon} />
+    <InlineSVG src={iconSearch} width={13} height={13} className={styles.icon} />
     <Input
       type="search"
       value={value}
