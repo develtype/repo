@@ -1,12 +1,15 @@
 import React, { useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styles from './list.styles';
+import IconRefresh from '~src/asset/icon/icon-refresh.svg';
 import { Button } from '~src/components/button/button';
 import { DataColDefType, DataTable } from '~src/components/data-table/data-table';
+import { IconButton } from '~src/components/icon-button/icon-button';
 import { InputSearch } from '~src/components/input-search/input-search';
 import { Space } from '~src/components/space/space';
 import { CreateUserModal } from '~src/modals/create-user/create-user-modal';
+import { userAction } from '~src/redux/user/user.action';
 import { userSelector } from '~src/redux/user/user.state';
 
 export const UsersList = () => {
@@ -26,6 +29,7 @@ export const UsersList = () => {
   ];
 
   const nav = useNavigate();
+  const dispatch = useDispatch();
   const usersList = useSelector(userSelector.usersList);
   const [filterString, setFilterString] = useState('');
   const [createModalVisible, setCreateModalVisible] = useState(false);
@@ -39,6 +43,10 @@ export const UsersList = () => {
     [usersList, filterString],
   );
 
+  function refreshButtonClick() {
+    dispatch(userAction.fetchUsers.request());
+  }
+
   return (
     <div className={styles.root}>
       <div className={styles.controlWrapper}>
@@ -47,6 +55,16 @@ export const UsersList = () => {
           width={250}
           onChange={(e) => setFilterString(e.currentTarget.value)}
         />
+        <Space horizonal="auto" />
+        <IconButton
+          svgIconSrc={IconRefresh}
+          sizeType="sm"
+          buttonColor="greenBlue"
+          iconColor="greenBlue"
+          outlined
+          onClickButton={refreshButtonClick}
+        />
+        <Space horizonal={10} />
         <Button
           name="+ Create"
           sizeType="sm"

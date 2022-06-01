@@ -43,7 +43,7 @@ export const Button = ({
         { [styles.greenBlue]: buttonColor === 'greenBlue' },
         { [styles.whiteFontColor]: fontColor === 'white' },
         { [styles.coolGrayFontColor]: fontColor === 'greenBlue' },
-        outlined && styles.outlined,
+        { [styles.outlined]: outlined },
       ),
       {
         borderWidth: outlineBorderwidth,
