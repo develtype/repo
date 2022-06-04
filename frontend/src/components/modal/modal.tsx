@@ -3,7 +3,7 @@ import React, { ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import InlineSVG from 'react-inlinesvg/esm';
 import styles from './modal.styles';
-import closeIcon from '~src/asset/icon/icon-x.svg';
+import iconX from '~src/asset/icon/icon-x.svg';
 
 export type PropsType = {
   title: string;
@@ -62,7 +62,7 @@ export const Modal = ({
             className={styles.closeButton}
             width={12}
             height={12}
-            src={closeIcon}
+            src={iconX}
             onClick={onClose}
           />
         </div>

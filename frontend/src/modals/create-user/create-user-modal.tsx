@@ -22,7 +22,6 @@ const CreateUser = ({
   );
   const [email, setEmail, emailError] = useStateControl(
     '',
-    [validators.isRequired],
   );
 
   const disabled = !!nameError || !!emailError;

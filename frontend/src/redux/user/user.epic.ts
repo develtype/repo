@@ -23,9 +23,22 @@ const createUserEpic: Epic = (
 ) => actions$.pipe(
   filter(userAction.createUser.request.match),
   switchMap(({ payload }) => userService.createUser(payload).pipe(
-    mergeMap(() => [
+    mergeMap(({ data }) => [
       userAction.createUser.success(),
-      userAction.fetchUsers.request(),
+      userAction.setUser({ id: data.id, ...payload }),
+    ]),
+    catchError((err) => of(userAction.createUser.failure({ errorMsg: err.response?.message }))),
+  )),
+);
+
+const updateUserEpic: Epic = (
+  actions$: Observable<Action>,
+) => actions$.pipe(
+  filter(userAction.updateUser.request.match),
+  switchMap(({ payload }) => userService.updateUser(payload).pipe(
+    mergeMap(() => [
+      userAction.updateUser.success(),
+      userAction.setUser(payload),
     ]),
     catchError((err) => of(userAction.createUser.failure({ errorMsg: err.response?.message }))),
   )),
@@ -34,4 +47,5 @@ const createUserEpic: Epic = (
 export const userEpic = combineEpics(
   fetchUsersEpic,
   createUserEpic,
+  updateUserEpic,
 );
