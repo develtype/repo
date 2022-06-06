@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styles from './list.styles';
-import iconRefresh from '~src/asset/icon/icon-refresh.svg';
+import iconRefresh from '~src/assets/icon/icon-refresh.svg';
 import { Button } from '~src/components/button/button';
 import { DataColDefType, DataTable } from '~src/components/data-table/data-table';
 import { IconButton } from '~src/components/icon-button/icon-button';

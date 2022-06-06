@@ -7,7 +7,7 @@ import { Space } from '~src/components/space/space';
 import { withModalWrapper } from '~src/hoc/with-modal-wrapper';
 import { useStateControl } from '~src/hooks/use-state-control';
 import { userAction } from '~src/redux/user/user.action';
-import { validators, validatorsErrkeys } from '~src/util/validators';
+import { validators, validatorsErrkeys } from '~src/utils/validators';
 
 type PropType = {
   onClose: () => void;

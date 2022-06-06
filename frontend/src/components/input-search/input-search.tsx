@@ -3,7 +3,7 @@ import React, { ChangeEvent, KeyboardEvent } from 'react';
 import InlineSVG from 'react-inlinesvg/esm';
 import { Input } from '../input/input';
 import styles from './input-search.styles';
-import iconSearch from '~src/asset/icon/icon-search.svg';
+import iconSearch from '~src/assets/icon/icon-search.svg';
 
 export type PropsType = {
   value?: string;
