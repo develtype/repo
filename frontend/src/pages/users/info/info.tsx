@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './info.styles';
-import iconPencil from '~src/asset/icon/icon-pencil.svg';
+import iconPencil from '~src/assets/icon/icon-pencil.svg';
 import { Button } from '~src/components/button/button';
 import { Input } from '~src/components/input/input';
 import { Space } from '~src/components/space/space';
@@ -10,7 +10,7 @@ import { useStateControl } from '~src/hooks/use-state-control';
 import { asyncStatusSelector } from '~src/redux/asyncstatus/asyncstatus.state';
 import { userAction } from '~src/redux/user/user.action';
 import { userSelector } from '~src/redux/user/user.state';
-import { validators, validatorsErrkeys } from '~src/util/validators';
+import { validators, validatorsErrkeys } from '~src/utils/validators';
 
 export const UsersInfo = () => {
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import React, { ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import InlineSVG from 'react-inlinesvg/esm';
 import styles from './modal.styles';
-import iconX from '~src/asset/icon/icon-x.svg';
+import iconX from '~src/assets/icon/icon-x.svg';
 
 export type PropsType = {
   title: string;
