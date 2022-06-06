@@ -12,7 +12,19 @@ export type CreateUserParamsType = {
 }
 const createUser = (
   data: CreateUserParamsType,
-) => httpApi.post({
+) => httpApi.post<ResponseAjax<{ id: number; }>>({
+  url: '/users',
+  body: data,
+});
+
+export type UpdateUserParamsType = {
+  id: number;
+  name: string;
+  email?: string;
+}
+const updateUser = (
+  data: UpdateUserParamsType,
+) => httpApi.put({
   url: '/users',
   body: data,
 });
@@ -20,4 +32,5 @@ const createUser = (
 export const userService = {
   fetchUsers,
   createUser,
+  updateUser,
 };

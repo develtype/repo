@@ -4,7 +4,7 @@ import styles from './create-user-modal.styles';
 import { Button } from '~src/components/button/button';
 import { Input } from '~src/components/input/input';
 import { Space } from '~src/components/space/space';
-import { withModalWrapper } from '~src/hoc/withModalWrapper';
+import { withModalWrapper } from '~src/hoc/with-modal-wrapper';
 import { useStateControl } from '~src/hooks/use-state-control';
 import { userAction } from '~src/redux/user/user.action';
 import { validators, validatorsErrkeys } from '~src/util/validators';
@@ -22,7 +22,6 @@ const CreateUser = ({
   );
   const [email, setEmail, emailError] = useStateControl(
     '',
-    [validators.isRequired],
   );
 
   const disabled = !!nameError || !!emailError;
@@ -57,7 +56,7 @@ const CreateUser = ({
     <>
       <div className={styles.content}>
         <label>
-          {'Name'}
+          Name
         </label>
         <Input
           type="text"
@@ -67,7 +66,7 @@ const CreateUser = ({
           {nameErrorMessage()}
         </div>
         <label>
-          {'E-mail'}
+          E-mail
         </label>
         <Input
           type="email"

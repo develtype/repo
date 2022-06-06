@@ -9,6 +9,7 @@ import { toastTool } from '~src/tools/toast.tool';
 const asyncActions = [
   userAction.fetchUsers,
   userAction.createUser,
+  userAction.updateUser,
 ];
 
 const asyncStartEpic: Epic = (

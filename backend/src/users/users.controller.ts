@@ -30,7 +30,23 @@ const createUser = async (req: Request<any, any, { name: string; email: string; 
   }
 };
 
+const updateUser = async (req: Request<any, any, { id: number; name: string; email: string; }>, res: Response): Promise<Response> => {
+  try {
+    const { id, name, email } = req.body;
+    const data = await usersService.updateUser(id, name, email);
+    return res.status(200).json({ status: 200, data });
+  }
+  catch (e) {
+    if (e instanceof Error) {
+      return res.status(400).json({ status: 400, message: e.message });
+    } else {
+      return res.status(500);
+    }
+  }
+};
+
 export const usersController = {
   fetch: fetchUsers,
   create: createUser,
+  update: updateUser,
 };
