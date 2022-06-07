@@ -72,8 +72,17 @@ const greenBlue = css({
   backgroundColor: '#6dabb1',
 });
 
+const gray = css({
+  border: 'solid 2px #999999',
+  backgroundColor: '#999999',
+});
+
 const whiteIconColor = css({
   color: 'white',
+});
+
+const grayIconColor = css({
+  color: '#999999',
 });
 
 const greenBlueIconColor = css({
@@ -93,6 +102,8 @@ export default {
   rounded,
   noShapeButton,
   greenBlue,
+  gray,
   whiteIconColor,
+  grayIconColor,
   greenBlueIconColor,
 };

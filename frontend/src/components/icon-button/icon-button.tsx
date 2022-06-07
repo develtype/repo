@@ -6,15 +6,15 @@ import styles from './icon-button.styles';
 type IconButtonPropType = {
   svgIconSrc: string;
   sizeType?: 'sm' | 'md' | 'lg';
-  buttonColor?: 'greenBlue';
-  iconColor?: 'greenBlue' | 'white';
+  buttonColor?: 'greenBlue' | 'gray';
+  iconColor?: 'greenBlue' | 'gray' | 'white';
   borderRadius?: number;
   outlined?: boolean;
   noShape?: boolean;
   isRounded?: boolean;
   isCircled?: boolean;
   disabled?: boolean;
-  onClickButton?: () => void;
+  onClickButton?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export function IconButton({
@@ -38,7 +38,9 @@ export function IconButton({
         { [styles.mdSize]: sizeType === 'md' },
         { [styles.lgSize]: sizeType === 'lg' },
         { [styles.greenBlue]: buttonColor === 'greenBlue' },
+        { [styles.gray]: buttonColor === 'gray' },
         { [styles.whiteIconColor]: iconColor === 'white' },
+        { [styles.grayIconColor]: iconColor === 'gray' },
         { [styles.greenBlueIconColor]: iconColor === 'greenBlue' },
         { [styles.rounded]: isRounded },
         { [styles.circled]: isCircled },

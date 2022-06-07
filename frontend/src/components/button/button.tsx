@@ -8,14 +8,14 @@ export type PropsType = {
   name: string;
   sizeType?: 'sm' | 'md' | 'lg' | 'full';
   svgIconSrc?: string;
-  buttonColor?: 'greenBlue';
-  fontColor?: 'greenBlue' | 'white';
+  buttonColor?: 'greenBlue' | 'gray' | 'dimedRed';
+  fontColor?: 'greenBlue' | 'gray' | 'dimedRed' | 'white';
   outlineBorderwidth?: number;
   outlined?: boolean;
   disabled?: boolean;
   isRounded?: boolean;
   isFullFill?: boolean;
-  onClickButton(): void;
+  onClickButton(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 };
 
 export const Button = ({
@@ -41,8 +41,12 @@ export const Button = ({
         { [styles.fullSize]: sizeType === 'full' },
         { [styles.rounded]: isRounded },
         { [styles.greenBlue]: buttonColor === 'greenBlue' },
+        { [styles.gray]: buttonColor === 'gray' },
+        { [styles.dimedRed]: buttonColor === 'dimedRed' },
+        { [styles.greenBlueFontColor]: fontColor === 'greenBlue' },
+        { [styles.grayFontColor]: fontColor === 'gray' },
+        { [styles.dimedRed]: fontColor === 'dimedRed' },
         { [styles.whiteFontColor]: fontColor === 'white' },
-        { [styles.coolGrayFontColor]: fontColor === 'greenBlue' },
         { [styles.outlined]: outlined },
       ),
       {

@@ -67,8 +67,26 @@ const greenBlue = css({
   backgroundColor: '#6dabb1',
 });
 
-const coolGrayFontColor = css({
+const dimedRed = css({
+  border: 'solid 2px #bf5a5a',
+  backgroundColor: '#bf5a5a',
+});
+
+const gray = css({
+  border: 'solid 2px #999999',
+  backgroundColor: '#999999',
+});
+
+const greenBlueFontColor = css({
   color: '#6dabb1',
+});
+
+const grayFontColor = css({
+  color: '#999999',
+});
+
+const dimedRedFontColor = css({
+  color: '#bf5a5a',
 });
 
 const whiteFontColor = css({
@@ -91,7 +109,11 @@ export default {
   label,
   rounded,
   greenBlue,
-  coolGrayFontColor,
+  gray,
+  dimedRed,
+  greenBlueFontColor,
+  grayFontColor,
+  dimedRedFontColor,
   whiteFontColor,
   outlined,
 };
