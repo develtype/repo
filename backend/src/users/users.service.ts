@@ -49,8 +49,16 @@ const updateUser = async (id: number, name: string, email: string) => {
   return usersData[id];
 };
 
+const deleteUser = async (id: number) => {
+  delete usersData[id];
+
+  await new Promise((r) => setTimeout(r, Math.random() * 60 + 70));
+  return usersData[id];
+};
+
 export const usersService = {
   fetchUsers,
   createUser,
   updateUser,
+  deleteUser,
 };
