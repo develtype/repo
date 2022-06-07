@@ -45,8 +45,24 @@ const updateUser = async (req: Request<any, any, { id: number; name: string; ema
   }
 };
 
+const deleteUser = async (req: Request<any, any, { id: number; }>, res: Response): Promise<Response> => {
+  try {
+    const { id } = req.body;
+    const data = await usersService.deleteUser(id);
+    return res.status(200).json({ status: 200, data });
+  }
+  catch (e) {
+    if (e instanceof Error) {
+      return res.status(400).json({ status: 400, message: e.message });
+    } else {
+      return res.status(500);
+    }
+  }
+};
+
 export const usersController = {
   fetch: fetchUsers,
   create: createUser,
   update: updateUser,
+  delete: deleteUser,
 };
