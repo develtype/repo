@@ -1,4 +1,4 @@
-import { util } from '../util/util';
+import { util } from "@utils/util";
 
 export type UserType = {
   id: number;
