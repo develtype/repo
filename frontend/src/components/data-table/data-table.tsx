@@ -5,6 +5,7 @@ import styles from './data-table.styles';
 export type DataColDefType = {
   dataKey: string;
   label?: string;
+  cellRender?(cellData: string | number): JSX.Element;
 }
 export type DataRowListType = {
   [key: string]: string | number;
@@ -54,7 +55,7 @@ export const DataTable = ({
           {dataColDef.map(
             (def, idx) => (
               <th
-                key={def.dataKey}
+                key={`${def.dataKey}-${idx}`}
                 className={cx(
                   styles.headCell,
                   { [styles.columnSeperate]: columnSeperate && idx !== dataColDef.length - 1 },
@@ -68,12 +69,12 @@ export const DataTable = ({
       </thead>
       <tbody className={styles.body}>
         {dataList.map(
-          (row, idx) => (
+          (row, rIdx) => (
             <tr
-              key={idx}
+              key={rIdx}
               className={cx(
                 { [styles.seperateRow]: seperateRow },
-                { [styles.colorizedRow]: colorizedRow && (idx % 2 === 1) },
+                { [styles.colorizedRow]: colorizedRow && (rIdx % 2 === 1) },
                 css({
                   height: bodyRowHeight,
                 }),
@@ -84,15 +85,15 @@ export const DataTable = ({
               }}
             >
               {dataColDef.map(
-                (col, idx) => (
+                (col, cIdx) => (
                   <td
-                    key={`${row[col.dataKey]}-${idx}`}
+                    key={`${rIdx}-${cIdx}`}
                     className={cx(
                       styles.bodyCell,
-                      { [styles.columnSeperate]: columnSeperate && idx !== dataColDef.length - 1 },
+                      { [styles.columnSeperate]: columnSeperate && cIdx !== dataColDef.length - 1 },
                     )}
                   >
-                    {row[col.dataKey]}
+                    {col.cellRender ? col.cellRender(row[col.dataKey]) : row[col.dataKey]}
                   </td>
                 ),
               )}
