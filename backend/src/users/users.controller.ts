@@ -30,9 +30,10 @@ const createUser = async (req: Request<any, any, { name: string; email: string; 
   }
 };
 
-const updateUser = async (req: Request<any, any, { id: number; name: string; email: string; }>, res: Response): Promise<Response> => {
+const updateUser = async (req: Request<{ id: number }, any, { name: string; email: string; }>, res: Response): Promise<Response> => {
   try {
-    const { id, name, email } = req.body;
+    const { id } = req.params;
+    const { name, email } = req.body;
     const data = await usersService.updateUser(id, name, email);
     return res.status(200).json({ status: 200, data });
   }
@@ -45,9 +46,9 @@ const updateUser = async (req: Request<any, any, { id: number; name: string; ema
   }
 };
 
-const deleteUser = async (req: Request<any, any, { id: number; }>, res: Response): Promise<Response> => {
+const deleteUser = async (req: Request<{ id: number }, any, any>, res: Response): Promise<Response> => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     const data = await usersService.deleteUser(id);
     return res.status(200).json({ status: 200, data });
   }

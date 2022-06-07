@@ -25,8 +25,12 @@ export type UpdateUserParamsType = {
 const updateUser = (
   data: UpdateUserParamsType,
 ) => httpApi.put({
-  url: '/users',
-  body: data,
+  url: `/users/${data.id}`,
+  body: {
+    name: data.name,
+    email: data.email,
+  },
+});
 });
 
 export const userService = {
