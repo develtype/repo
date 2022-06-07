@@ -16,6 +16,9 @@
       "dom",
       "es2018"
     ],
+    "paths": {
+			"@utils/*": ["src/utils/*"],
+		}
   },
   "include": [
     "src/**/*"
