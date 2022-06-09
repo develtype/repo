@@ -15,7 +15,7 @@ const fetchUsers = async (req: Request, res: Response): Promise<Response> => {
   }
 };
 
-const createUser = async (req: Request<any, any, { name: string; email: string; }>, res: Response): Promise<Response> => {
+const createUser = async (req: Request<unknown, unknown, { name: string; email: string; }>, res: Response): Promise<Response> => {
   try {
     const { name, email } = req.body;
     const data = await usersService.createUser(name, email);
@@ -30,7 +30,7 @@ const createUser = async (req: Request<any, any, { name: string; email: string; 
   }
 };
 
-const updateUser = async (req: Request<{ id: number }, any, { name: string; email: string; }>, res: Response): Promise<Response> => {
+const updateUser = async (req: Request<{ id: string; }, unknown, { name: string; email: string; }>, res: Response): Promise<Response> => {
   try {
     const { id } = req.params;
     const { name, email } = req.body;
@@ -46,7 +46,7 @@ const updateUser = async (req: Request<{ id: number }, any, { name: string; emai
   }
 };
 
-const deleteUser = async (req: Request<{ id: number }, any, any>, res: Response): Promise<Response> => {
+const deleteUser = async (req: Request<{ id: string; }, unknown, unknown>, res: Response): Promise<Response> => {
   try {
     const { id } = req.params;
     const data = await usersService.deleteUser(id);

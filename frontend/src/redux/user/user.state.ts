@@ -23,7 +23,7 @@ const usersList = createSelector(
   users,
   (users) => Object.values(users),
 );
-const userById = (userId: number) => createSelector(
+const userById = (userId: string) => createSelector(
   users,
   (users) => users[userId] ?? null,
 );

@@ -10,6 +10,7 @@ const asyncActions = [
   userAction.fetchUsers,
   userAction.createUser,
   userAction.updateUser,
+  userAction.deleteUser,
 ];
 
 const asyncStartEpic: Epic = (

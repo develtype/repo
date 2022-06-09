@@ -71,7 +71,7 @@ export const DataTable = ({
         {dataList.map(
           (row, rIdx) => (
             <tr
-              key={rIdx}
+              key={Object.values(row)[0]}
               className={cx(
                 { [styles.seperateRow]: seperateRow },
                 { [styles.colorizedRow]: colorizedRow && (rIdx % 2 === 1) },
@@ -87,7 +87,7 @@ export const DataTable = ({
               {dataColDef.map(
                 (col, cIdx) => (
                   <td
-                    key={`${rIdx}-${cIdx}`}
+                    key={`${row[col.dataKey]}-${cIdx}`}
                     className={cx(
                       styles.bodyCell,
                       { [styles.columnSeperate]: columnSeperate && cIdx !== dataColDef.length - 1 },

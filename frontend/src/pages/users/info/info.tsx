@@ -16,7 +16,7 @@ export const UsersInfo = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userId } = useParams<{ userId: string; }>();
-  const user = useSelector(userSelector.userById(userId ? +userId : NaN));
+  const user = useSelector(userSelector.userById(userId ?? ''));
   const [editFlag, setEditFlag] = useState(false);
 
   const [name, setName, nameError] = useStateControl(

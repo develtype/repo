@@ -44,8 +44,22 @@ const updateUserEpic: Epic = (
   )),
 );
 
+const deleteUserEpic: Epic = (
+  actions$: Observable<Action>,
+) => actions$.pipe(
+  filter(userAction.deleteUser.request.match),
+  switchMap(({ payload }) => userService.deleteUser(payload).pipe(
+    mergeMap(() => [
+      userAction.deleteUser.success(),
+      userAction.removeUser(payload),
+    ]),
+    catchError((err) => of(userAction.createUser.failure({ errorMsg: err.response?.message }))),
+  )),
+);
+
 export const userEpic = combineEpics(
   fetchUsersEpic,
   createUserEpic,
   updateUserEpic,
+  deleteUserEpic,
 );
