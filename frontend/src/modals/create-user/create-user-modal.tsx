@@ -1,11 +1,12 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './create-user-modal.styles';
 import { Button } from '~src/components/button/button';
 import { Input } from '~src/components/input/input';
 import { Space } from '~src/components/space/space';
 import { withModalWrapper } from '~src/hoc/with-modal-wrapper';
 import { useStateControl } from '~src/hooks/use-state-control';
+import { asyncStatusSelector } from '~src/redux/asyncstatus/asyncstatus.state';
 import { userAction } from '~src/redux/user/user.action';
 import { validators, validatorsErrkeys } from '~src/utils/validators';
 
@@ -26,6 +27,18 @@ const CreateUser = ({
 
   const disabled = !!nameError || !!emailError;
 
+  const asyncSuccess = useSelector(asyncStatusSelector.asyncSuccess(userAction.createUser.request.type));
+  const [createClicked, setCreateClicked] = React.useState(false);
+
+  useEffect(
+    () => {
+      if (createClicked && asyncSuccess) {
+        onClose();
+      }
+    },
+    [asyncSuccess, createClicked],
+  );
+
   function nameErrorMessage() {
     if (nameError) {
       if (nameError[validatorsErrkeys.required]) {
@@ -44,11 +57,11 @@ const CreateUser = ({
 
   function createButtonClick() {
     if (!disabled) {
+      setCreateClicked(true);
       dispatch(userAction.createUser.request({
         name,
         email,
       }));
-      onClose();
     }
   }
 
@@ -79,7 +92,8 @@ const CreateUser = ({
       <div className={styles.footer}>
         <Button
           name="Cancel"
-          fontColor="greenBlue"
+          buttonColor="gray"
+          fontColor="gray"
           outlined
           onClickButton={onClose}
         />

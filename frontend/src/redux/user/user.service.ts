@@ -12,13 +12,13 @@ export type CreateUserParamsType = {
 }
 const createUser = (
   data: CreateUserParamsType,
-) => httpApi.post<ResponseAjax<{ id: number; }>>({
+) => httpApi.post<ResponseAjax<{ id: string; }>>({
   url: '/users',
   body: data,
 });
 
 export type UpdateUserParamsType = {
-  id: number;
+  id: string;
   name: string;
   email?: string;
 }
@@ -31,10 +31,19 @@ const updateUser = (
     email: data.email,
   },
 });
+
+export type DeleteUserParamsType = {
+  id: string;
+}
+const deleteUser = (
+  data: DeleteUserParamsType,
+) => httpApi.delete({
+  url: `/users/${data.id}`,
 });
 
 export const userService = {
   fetchUsers,
   createUser,
   updateUser,
+  deleteUser,
 };

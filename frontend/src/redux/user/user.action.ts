@@ -1,5 +1,5 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
-import { CreateUserParamsType, UpdateUserParamsType } from './user.service';
+import { CreateUserParamsType, DeleteUserParamsType, UpdateUserParamsType } from './user.service';
 import { initUserState } from './user.state';
 import { createAsyncAction } from '~src/redux/redux.util';
 import { UserType } from '~src/types/data.type';
@@ -9,6 +9,8 @@ const setUsers = createAction<UserType[]>('[user] set users');
 const createUser = createAsyncAction<CreateUserParamsType>('[user] create user');
 const updateUser = createAsyncAction<UpdateUserParamsType>('[user] update user');
 const setUser = createAction<UserType>('[user] set user');
+const deleteUser = createAsyncAction<DeleteUserParamsType>('[user] delete user');
+const removeUser = createAction<{ id: string; }>('[user] remove user');
 
 export const userAction = {
   fetchUsers,
@@ -16,6 +18,8 @@ export const userAction = {
   createUser,
   updateUser,
   setUser,
+  deleteUser,
+  removeUser,
 };
 
 export const userReducer = createReducer(
@@ -40,6 +44,14 @@ export const userReducer = createReducer(
           state.users = {};
         }
         state.users[payload.id] = payload;
+      },
+    )
+    .addCase(
+      removeUser,
+      (state, { payload }) => {
+        if (state.users) {
+          delete state.users[payload.id];
+        }
       },
     )
   ,

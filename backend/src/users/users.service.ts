@@ -1,32 +1,32 @@
-import { util } from "@utils/util";
+import { util } from '@utils/util';
 
 export type UserType = {
-  id: number;
+  id: string;
   name: string;
   email: string;
 }
 
 const usersData: { [id: string]: UserType; } = Array.from(Array(10).keys()).reduce<{ [id: string]: UserType; }>(
-  (res, item) => {
+  (res) => {
     const name = util.generateRandomString();
     const userItem = {
-      id: item + 1,
+      id: name,
       name,
       email: name + '@test.com',
     };
-    res[item] = userItem;
+    res[name] = userItem;
     return res;
   },
   {},
 );
 
 const fetchUsers = async () => {
-  await new Promise((r) => setTimeout(r, Math.random() * 50 + 90));
+  await new Promise((r) => setTimeout(r, Math.random() * 50 + 140));
   return Object.values(usersData);
 };
 
 const createUser = async (name: string, email: string) => {
-  const newId = Math.max(...Object.values(usersData).map((user) => +user.id)) + 1;
+  const newId = util.generateRandomString();
 
   usersData[newId] = {
     id: newId,
@@ -34,25 +34,25 @@ const createUser = async (name: string, email: string) => {
     email,
   };
 
-  await new Promise((r) => setTimeout(r, Math.random() * 80 + 80));
+  await new Promise((r) => setTimeout(r, Math.random() * 80 + 120));
   return { id: newId };
 };
 
-const updateUser = async (id: number, name: string, email: string) => {
+const updateUser = async (id: string, name: string, email: string) => {
   usersData[id] = {
     id,
     name,
     email,
   };
 
-  await new Promise((r) => setTimeout(r, Math.random() * 70 + 70));
+  await new Promise((r) => setTimeout(r, Math.random() * 70 + 100));
   return usersData[id];
 };
 
-const deleteUser = async (id: number) => {
+const deleteUser = async (id: string) => {
   delete usersData[id];
 
-  await new Promise((r) => setTimeout(r, Math.random() * 60 + 70));
+  await new Promise((r) => setTimeout(r, Math.random() * 60 + 100));
   return usersData[id];
 };
 
