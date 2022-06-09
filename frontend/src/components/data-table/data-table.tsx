@@ -5,7 +5,7 @@ import styles from './data-table.styles';
 export type DataColDefType = {
   dataKey: string;
   label?: string;
-  cellRender?(cellData: string | number): JSX.Element;
+  cellRender?: (cellData: string | number) => JSX.Element;
 }
 export type DataRowListType = {
   [key: string]: string | number;

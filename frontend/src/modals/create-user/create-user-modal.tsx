@@ -95,14 +95,14 @@ const CreateUser = ({
           buttonColor="gray"
           fontColor="gray"
           outlined
-          onClickButton={onClose}
+          onClick={onClose}
         />
         <Space horizonal={10} />
         <Button
           name="Create"
           fontColor="white"
           disabled={disabled}
-          onClickButton={createButtonClick}
+          onClick={createButtonClick}
         />
       </div>
     </>

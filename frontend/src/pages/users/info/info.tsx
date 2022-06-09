@@ -71,7 +71,7 @@ export const UsersInfo = () => {
                 sizeType="sm"
                 fontColor="greenBlue"
                 outlined
-                onClickButton={() => navigate(-1)}
+                onClick={() => navigate(-1)}
               />
               <Space horizonal={10} />
               <Button
@@ -79,7 +79,7 @@ export const UsersInfo = () => {
                 name="Edit"
                 sizeType="sm"
                 fontColor="white"
-                onClickButton={() => setEditFlag(true)}
+                onClick={() => setEditFlag(true)}
               />
             </>
           )
@@ -90,7 +90,7 @@ export const UsersInfo = () => {
                 sizeType="sm"
                 fontColor="greenBlue"
                 outlined
-                onClickButton={() => setEditFlag(false)}
+                onClick={() => setEditFlag(false)}
               />
               <Space horizonal={10} />
               <Button
@@ -98,7 +98,7 @@ export const UsersInfo = () => {
                 sizeType="sm"
                 fontColor="white"
                 disabled={disabled}
-                onClickButton={updateUser}
+                onClick={updateUser}
               />
             </>
           )}

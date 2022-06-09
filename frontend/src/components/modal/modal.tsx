@@ -10,7 +10,7 @@ export type PropsType = {
   alignV?: 'top' | 'bottom' | 'center';
   alignH?: 'left' | 'right' | 'center';
   children: ReactNode;
-  onClose(): void;
+  onClose?: () => void;
 };
 
 export const Modal = ({
@@ -45,7 +45,7 @@ export const Modal = ({
       )}
       onClick={(e) => {
         e.stopPropagation();
-        onClose();
+        onClose && onClose();
       }}
     >
       <div

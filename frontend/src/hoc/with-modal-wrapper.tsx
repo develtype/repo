@@ -2,7 +2,7 @@ import React, { ComponentType } from 'react';
 import { Modal } from '~src/components/modal/modal';
 
 type ModalWrapperPropsType = {
-  onClose(): void;
+  onClose?: () => void;
   modalOptions?: {
     alignV?: 'top' | 'bottom' | 'center';
     alignH?: 'left' | 'right' | 'center';
