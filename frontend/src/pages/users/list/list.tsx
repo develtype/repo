@@ -31,13 +31,13 @@ export const UsersList = () => {
     {
       dataKey: 'id',
       label: '',
-      cellRender: (data: string) => <IconButton
+      cellRender: (data) => <IconButton
         svgIconSrc={iconDelete}
         iconColor="gray"
         noShape
-        onClickButton={(e) => {
+        onClick={(e) => {
           e.stopPropagation();
-          cellDeleteBtnClick(data);
+          cellDeleteBtnClick(data as string);
         }}
       />,
     },
@@ -101,14 +101,14 @@ export const UsersList = () => {
           buttonColor="greenBlue"
           iconColor="greenBlue"
           outlined
-          onClickButton={refreshButtonClick}
+          onClick={refreshButtonClick}
         />
         <Space horizonal={10} />
         <Button
           name="+ Create"
           sizeType="sm"
           fontColor="white"
-          onClickButton={() => setCreateModalVisible(true)}
+          onClick={() => setCreateModalVisible(true)}
         />
       </div>
       <Space vertical={20} />

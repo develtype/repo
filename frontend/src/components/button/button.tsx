@@ -15,7 +15,7 @@ export type PropsType = {
   disabled?: boolean;
   isRounded?: boolean;
   isFullFill?: boolean;
-  onClickButton(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 export const Button = ({
@@ -28,7 +28,7 @@ export const Button = ({
   outlined = false,
   disabled = false,
   isRounded = true,
-  onClickButton,
+  onClick,
 }: PropsType) => (
   <button
     type="button"
@@ -53,7 +53,7 @@ export const Button = ({
         borderWidth: outlineBorderwidth,
       },
     )}
-    onClick={onClickButton}
+    onClick={onClick}
     disabled={disabled}
   >
     {svgIconSrc && (

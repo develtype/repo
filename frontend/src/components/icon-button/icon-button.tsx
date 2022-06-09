@@ -14,7 +14,7 @@ type IconButtonPropType = {
   isRounded?: boolean;
   isCircled?: boolean;
   disabled?: boolean;
-  onClickButton?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export function IconButton({
@@ -28,7 +28,7 @@ export function IconButton({
   isRounded = true,
   isCircled = false,
   disabled = false,
-  onClickButton,
+  onClick,
 }: IconButtonPropType) {
   return (
     <button
@@ -51,7 +51,7 @@ export function IconButton({
         }),
       )}
       type="button"
-      onClick={onClickButton}
+      onClick={onClick}
       disabled={disabled}
     >
       <InlineSVG

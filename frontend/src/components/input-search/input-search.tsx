@@ -12,7 +12,7 @@ export type PropsType = {
   placeholder?: string;
   disabled?: boolean;
   borderType?: 'default' | 'none' | 'bottom';
-  onChange?(e: ChangeEvent<HTMLInputElement>): void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: KeyboardEvent<HTMLInputElement>) => void;
 };
 

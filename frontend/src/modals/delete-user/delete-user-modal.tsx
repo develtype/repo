@@ -46,14 +46,14 @@ const DeleteUser = ({
           buttonColor="gray"
           fontColor="gray"
           outlined
-          onClickButton={onClose}
+          onClick={onClose}
         />
         <Space horizonal={10} />
         <Button
           name="Delete"
           buttonColor="dimedRed"
           fontColor="white"
-          onClickButton={createButtonClick}
+          onClick={createButtonClick}
         />
       </div>
     </>
