@@ -10,7 +10,6 @@ const cell = css({
   textAlign: 'center',
   border: '0px solid',
   padding: '5px 10px',
-  cursor: 'pointer',
 });
 
 const header = css({
@@ -25,6 +24,10 @@ const body = css({
   color: '#808080',
 });
 
+const cursorPointer = css({
+  cursor: 'pointer',
+});
+
 const headCell = css(
   cell,
 );
@@ -32,6 +35,10 @@ const headCell = css(
 const bodyCell = css(
   cell,
 );
+
+const selectedRow = css({
+  backgroundColor: '#f6ffec',
+});
 
 const seperateRow = css({
   borderBottom: '1px solid #dddddd',
@@ -50,8 +57,10 @@ export default {
   cell,
   header,
   body,
+  cursorPointer,
   headCell,
   bodyCell,
+  selectedRow,
   seperateRow,
   colorizedRow,
   columnSeperate,
