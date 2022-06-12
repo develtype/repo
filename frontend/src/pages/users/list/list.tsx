@@ -3,6 +3,7 @@ import { useSelector , useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styles from './list.styles';
 import iconDelete from '~src/assets/icon/icon-delete.svg';
+import iconDoc from '~src/assets/icon/icon-doc.svg';
 import iconRefresh from '~src/assets/icon/icon-refresh.svg';
 import { Button } from '~src/components/button/button';
 import { DataColDefType, DataTable } from '~src/components/data-table/data-table';
@@ -31,15 +32,29 @@ export const UsersList = () => {
     {
       dataKey: 'id',
       label: '',
-      cellRender: (data) => <IconButton
-        svgIconSrc={iconDelete}
-        iconColor="gray"
-        noShape
-        onClick={(e) => {
-          e.stopPropagation();
-          cellDeleteBtnClick(data as string);
-        }}
-      />,
+      cellRender: (id) => (
+        <>
+          <IconButton
+            svgIconSrc={iconDoc}
+            iconColor="gray"
+            noShape
+            onClick={(e) => {
+              e.stopPropagation();
+              nav(`./${id}`);
+            }}
+          />
+          <Space horizonal={20} />
+          <IconButton
+            svgIconSrc={iconDelete}
+            iconColor="gray"
+            noShape
+            onClick={(e) => {
+              e.stopPropagation();
+              cellDeleteBtnClick(id as string);
+            }}
+          />
+        </>
+      ),
     },
   ];
 
@@ -117,7 +132,6 @@ export const UsersList = () => {
         dataList={filteredUserDataList}
         colorizedRow
         columnSeperate
-        onClickRow={(data) => nav(`./${data.id}`)}
       />
       {createModalVisible && MemoizedCreateModal}
       {deleteModalVisible && MemoizedDeleteModal}
